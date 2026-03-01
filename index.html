@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Zilo Fashion Store</title>
+    <title>Zilo Fashion</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            font-family: Arial;
             margin: 0;
+            background-color: #f4f4f4;
             text-align: center;
         }
         header {
-            background-color: #222;
+            background-color: black;
             color: white;
             padding: 20px;
         }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
         .products {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            padding: 20px;
+            padding: 40px;
         }
         .card {
             background: white;
             width: 250px;
-            margin: 15px;
-            padding: 15px;
+            margin: auto;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
@@ -33,42 +34,33 @@
             border-radius: 10px;
         }
         button {
-            background-color: #ff6600;
+            padding: 10px;
+            background-color: #fb641b;
             color: white;
             border: none;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
-        }
-        button:hover {
-            background-color: #e65c00;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Zilo Fashion Store</h1>
-    <p>Recycled Saris & Fancy Shirts Collection</p>
+    <div class="logo">ZILO FASHION</div>
+    <p>Recycled Sarees & Fancy Shirts</p>
 </header>
 
 <div class="products">
-
     <div class="card">
-        <img src="sari1.jpg" alt="Recycled Sari">
-        <h3>Recycled Sari</h3>
-        <p>Price: ₹999</p>
-        <button>Buy Now</button>
-    </div>
+        <img src="saree-royalblue/front.jpg">
+        <h3>Royal Blue Designer Saree</h3>
+        <p>₹1499</p>
 
-    <div class="card">
-        <img src="shirt1.jpg" alt="Fancy Shirt">
-        <h3>Fancy Shirt</h3>
-        <p>Price: ₹799</p>
-        <button>Buy Now</button>
+        <a href="saree1.html">
+            <button>View Product</button>
+        </a>
     </div>
-
 </div>
 
 </body>
