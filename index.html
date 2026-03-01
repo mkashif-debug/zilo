@@ -1,183 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>ZILO Fashion Store</title>
-
-<style>
-body{margin:0;font-family:Arial;background:#f2f2f2}
-
-/* HEADER */
-header{
-background:#111;
-color:white;
-padding:15px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-}
-header img{height:50px}
-header h1{margin:0}
-
-/* SEARCH */
-input[type=text]{
-padding:8px;
-width:40%;
-border-radius:5px;
-border:none;
-}
-
-/* PRODUCTS */
-.container{padding:20px}
-.products{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-gap:20px;
-}
-.card{
-background:white;
-padding:15px;
-border-radius:10px;
-text-align:center;
-box-shadow:0 0 8px rgba(0,0,0,0.1);
-}
-.card img{width:100%;height:220px;object-fit:cover}
-
-/* BUTTONS */
-button{
-background:#28a745;
-color:white;
-border:none;
-padding:8px 14px;
-cursor:pointer;
-border-radius:4px;
-margin-top:5px;
-}
-
-/* CART */
-#cart{
-position:fixed;
-right:0;
-top:0;
-width:260px;
-height:100%;
-background:white;
-border-left:4px solid #28a745;
-padding:15px;
-overflow:auto;
-}
-
-/* COUPON + DISCOUNT */
-#couponBox{margin-top:10px}
-</style>
+    <title>Zilo Fashion Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #222;
+            color: white;
+            padding: 20px;
+        }
+        .products {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            width: 250px;
+            margin: 15px;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        button {
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e65c00;
+        }
+    </style>
 </head>
-
 <body>
 
 <header>
-<div style="display:flex;align-items:center;">
-<img src="logo.png">
-<h1 style="margin-left:10px;">ZILO</h1>
-</div>
-<input type="text" placeholder="Search clothes..." onkeyup="searchItem(this.value)">
-<div>Cart ₹<span id="total">0</span></div>
+    <h1>Zilo Fashion Store</h1>
+    <p>Recycled Saris & Fancy Shirts Collection</p>
 </header>
 
-<div class="container">
-<h2>Fashion Sale</h2>
+<div class="products">
 
-<div class="products" id="products">
+    <div class="card">
+        <img src="sari1.jpg" alt="Recycled Sari">
+        <h3>Recycled Sari</h3>
+        <p>Price: ₹999</p>
+        <button>Buy Now</button>
+    </div>
 
-<div class="card" data-name="silk sari">
-<img src="https://via.placeholder.com/300">
-<h3>Silk Sari</h3>
-<p>₹2500</p>
-<button onclick="addCart('Silk Sari',2500)">Add to Cart</button>
-</div>
-
-<div class="card" data-name="designer dress">
-<img src="https://via.placeholder.com/300">
-<h3>Designer Dress</h3>
-<p>₹1800</p>
-<button onclick="addCart('Designer Dress',1800)">Add to Cart</button>
-</div>
-
-<div class="card" data-name="cotton kurti">
-<img src="https://via.placeholder.com/300">
-<h3>Cotton Kurti</h3>
-<p>₹900</p>
-<button onclick="addCart('Cotton Kurti',900)">Add to Cart</button>
-</div>
+    <div class="card">
+        <img src="shirt1.jpg" alt="Fancy Shirt">
+        <h3>Fancy Shirt</h3>
+        <p>Price: ₹799</p>
+        <button>Buy Now</button>
+    </div>
 
 </div>
-
-<h2>Gift Vouchers</h2>
-<p>Buy gift vouchers for your loved ones!</p>
-<button onclick="alert('Gift voucher added to cart')">Add Gift Voucher</button>
-
-</div>
-
-<div id="cart">
-<h3>Your Cart</h3>
-<ul id="items"></ul>
-
-<p><b>Total ₹<span id="total2">0</span></b></p>
-
-<div id="couponBox">
-<input type="text" id="coupon" placeholder="Enter Coupon">
-<button onclick="applyCoupon()">Apply</button>
-</div>
-
-<h4>Order Form</h4>
-<input type="text" id="name" placeholder="Your Name"><br><br>
-<input type="text" id="address" placeholder="Address"><br><br>
-<button onclick="placeOrder()">Buy Now</button>
-</div>
-
-<script>
-let total=0;
-
-function addCart(name,price){
-let li=document.createElement("li");
-li.textContent=name+" ₹"+price;
-items.appendChild(li);
-total+=price;
-updateTotal();
-}
-
-function updateTotal(){
-document.getElementById("total").textContent=total;
-document.getElementById("total2").textContent=total;
-}
-
-function searchItem(v){
-let cards=document.querySelectorAll(".card");
-cards.forEach(c=>{
-c.style.display=c.dataset.name.includes(v.toLowerCase())?"block":"none";
-});
-}
-
-function applyCoupon(){
-let c=document.getElementById("coupon").value;
-if(c==="ZILO10"){
-total=total*0.9;
-alert("10% discount applied");
-updateTotal();
-}else{
-alert("Invalid coupon");
-}
-}
-
-function placeOrder(){
-let n=document.getElementById("name").value;
-let a=document.getElementById("address").value;
-if(n===""||a===""){
-alert("Fill all details");
-return;
-}
-alert("Order placed successfully!");
-}
-</script>
 
 </body>
 </html>
